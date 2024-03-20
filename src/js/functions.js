@@ -1,5 +1,6 @@
 import {todoList} from '../index';
 
+// Create a Todo
 export class Todo {
     static fromJson({homework,id,completed,created}) {
         const temTodo = new Todo(homework);
@@ -17,6 +18,8 @@ export class Todo {
         this.created = new Date();
     }
 }
+
+// Type of Todos
 export class TodoList {
     constructor() {
         this.loadLocalStorage();
@@ -59,12 +62,7 @@ export class TodoList {
     }
 }
 
-const divTodoList = document.querySelector('.todo-list');
-const txtInput = document.querySelector('.new-todo');
-const btnDelete = document.querySelector('.clear-completed');
-const ulFilters = document.querySelector('.filters');
-const anchorFilters = document.querySelectorAll('.filtro');
-
+// Create a Todo on the HTML
 export const createTodo = (todo) => {
     const htmlTodo = `
     <li class="${(todo.completed) ? 'completed' : ''}" data-id="${todo.id}">
@@ -82,6 +80,15 @@ export const createTodo = (todo) => {
     divTodoList.append(div.firstElementChild);
     return div;
 }
+
+// HTML Class
+const divTodoList = document.querySelector('.todo-list'),
+txtInput = document.querySelector('.new-todo'),
+btnDelete = document.querySelector('.clear-completed'),
+ulFilters = document.querySelector('.filters'),
+anchorFilters = document.querySelectorAll('.filtro');
+
+// Events
 
 txtInput.addEventListener('keyup', (event) => {
     if (event.keyCode == 13 && txtInput.value.length > 0) {
